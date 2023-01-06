@@ -12,6 +12,7 @@
     "url": "git+https://github.com/SajjadLab/PathicBackend.git"
   },
   "keywords": [],
+  "type": "module",
   "author": "Sajjad",
   "license": "ISC",
   "bugs": {
