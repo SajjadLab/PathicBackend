@@ -1,3 +1,4 @@
+import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
@@ -9,7 +10,13 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 const uri = process.env.DB;
+const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
 
+app.use(cors(corsOptions))
 app.use(tgjRouter);
 app.use(blogRouter);
 
