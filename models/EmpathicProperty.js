@@ -5,12 +5,16 @@ import { ObjectId } from "mongodb";
 // is used to make up a Property
 // Multiple EmpathicProperties within a Property suggests differing views on the nature of a property
 const EmpathicPropertySchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
     value: { // the value of an empathic property, should be of type=type listed under parent Property
         type: Mixed,
         required: true
     },
-    empaths: { // empaths that give meaning to this interpretation of a property
-        type: [ObjectId],
+    empaths: { // empaths that give meaning to this interpretation of a property by tempathic connection
+        type: [{type: Schema.types.ObjectId, ref: "Tempath"}],
         required: true
     },
     empathicStatus: { // fuzzy qualitative string of acceptance of this object

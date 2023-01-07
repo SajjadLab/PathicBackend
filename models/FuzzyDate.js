@@ -17,4 +17,5 @@ const FuzzyDateSchema = new Schema({
     }
 })
 
-module.exports = FuzzyDate = mongoose.model("FuzzyDate", FuzzyDateSchema);
+const FuzzyDate = mongoose.model("FuzzyDate", FuzzyDateSchema);
+export default FuzzyDateSchema;

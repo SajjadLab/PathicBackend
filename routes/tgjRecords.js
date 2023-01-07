@@ -6,7 +6,6 @@ const tgjRouter = express.Router();
  
 // import controllers
 import { getAllTGJ, getOneTGJ, addOneTGJ, getAnnualTGJ } from "../controllers/tgjController.js";
-
  
 // get a list of all the records.
 tgjRouter.get("/Pathic", getAllTGJ);

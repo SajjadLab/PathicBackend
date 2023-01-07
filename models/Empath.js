@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import Property from "./Property";
+import FuzzyDate from "./FuzzyDate";
 
     {/*
     entities: [
@@ -9,6 +9,10 @@ import Property from "./Property";
 
 // Interpretation object for relating perspective
 const EmpathSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
     source: { 
         type: Schema.types.ObjectId,
         ref: "Source",
@@ -27,13 +31,12 @@ const EmpathSchema = new Schema({
         required: true
     },
     interpreter: { // The individual interprating the highlight
-        type: Schema.types.ObjectId, // type Person
-        ref: "Person",
+        type: Schema.types.ObjectId, // type Tempath to a person
+        ref: "Tempath",
         required: true
     },
     interpretationDate: { // When this object was interpreted
-        type: Schema.types.ObjectId, // type FuzzyDate
-        ref: "FuzzyDate",
+        type: FuzzyDate,
         required: true
     },
     tags: { // Query tags

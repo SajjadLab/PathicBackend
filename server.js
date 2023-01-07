@@ -4,9 +4,12 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import tgjRouter from "./routes/tgjRecords.js";
 import blogRouter from "./routes/blogRecords.js";
+import sourceRouter from "./routes/sourceRecords.js";
+import tempathRouter from "./routes/tempathRecords.js";
 
 
 dotenv.config();
+var _db;
 const app = express();
 const port = process.env.PORT || 5000;
 const uri = process.env.DB;
@@ -17,8 +20,11 @@ const corsOptions ={
 }
 
 app.use(cors(corsOptions))
+app.use(express.json());
 app.use(tgjRouter);
 app.use(blogRouter);
+app.use(sourceRouter);
+app.use(tempathRouter);
 
 app.get("/", (req, res) => {
   res.send("hello");
