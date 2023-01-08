@@ -13,7 +13,7 @@ const TemporalGeoJsonSchema = new Schema({
     name: String,
     startDate: FuzzyDateSchema,
     endDate: FuzzyDateSchema,
-    entities: [{ type: Schema.Types.ObjectId, ref: "Entity" }], // link to objects through Tempaths
+    entities: [{ type: Schema.Types.ObjectId, ref: "Tempath" }], // link to objects through Tempaths
     area: Number,
     // center: [Number]
   },
