@@ -1,8 +1,8 @@
 import mongoose, { Schema } from "mongoose";
-import FuzzyDateSchema from "./FuzzyDate.js";
+import FuzzyDate from "./FuzzyDate";
 
-// Defines a versatile property object for entities
-const TempathSchema = new Schema({
+// Interpretation object for relating perspective
+const EmpathSchema = new Schema({
     source: { 
         type: Schema.types.ObjectId,
         ref: "Entity", //zotero link or maybe people
@@ -45,17 +45,9 @@ const TempathSchema = new Schema({
         type: FuzzyDate,
         required: true
     },
-    startDate: { // start date of relationship
-        type: FuzzyDateSchema,
-        required: true
-    },
-    endDate: { // end date of relationship
-        type: FuzzyDateSchema,
-        required: true
-    },
     chain: { // the books listed bibliography and references
                       // Will help when searching for new info (possible monty carlo search tre)
-        type: [{type: Schema.Types.ObjectId, ref: "Entity"}], // any ID (empath, idea)
+        type: [{type: Schema.Types.ObjectId, ref: "Tempath"}], // tempath to other empaths
         required: false
     },
     reliability: {
@@ -68,5 +60,5 @@ const TempathSchema = new Schema({
     }
 })
 
-const Tempath = mongoose.model("Tempath", TempathSchema);
-export default Tempath;
+const Empath = mongoose.model("Empath", EmpathSchema);
+export default Empath

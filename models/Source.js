@@ -24,12 +24,16 @@ const SourceSchema = new Schema({
         required: true
     },
     instances: { // instances (most will be zoteroLinks)
-        type: [{type: Schema.Types.ObjectId, ref: "Tempath"}], // tempath to an instance 
+        type: [{type: Schema.Types.ObjectId, ref: "Tempath"}], // tempath to an instance  
         required: false
     },
     referencesUsed: { // the books listed bibliography and references
                       // Will help when searching for new info (possible monty carlo search tre)
         type: [{type: Schema.Types.ObjectId, ref: "Tempath"}], // tempath to other Source
+        required: false
+    },
+    reliability: {
+        type: String,
         required: false
     }
 })
