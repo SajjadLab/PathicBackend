@@ -24,11 +24,11 @@ const getAnnualTGJ = async (req, res) => {
         const tgjs = await TemporalGeoJson.find({})
                             .populate({
                                 path: "startDate",
-                                match: { empathicProperties: { value: { startDate: { $lte: year } } } }
+                                match: { endDate: { $lte: year } }
                             })
                             .populate({
                                 path: "endDate",
-                                match: { empathicProperties: { value: { endDate: { $gte: year } } } }
+                                match: { startDate: { $gte: year } }
                             })
         res.status(200).json(tgjs);
     }

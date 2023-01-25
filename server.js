@@ -6,6 +6,7 @@ import tgjRouter from "./routes/tgjRecords.js";
 import blogRouter from "./routes/blogRecords.js";
 import sourceRouter from "./routes/sourceRecords.js";
 import tempathRouter from "./routes/tempathRecords.js";
+import empathRouter from "./routes/empathRecords.js";
 
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(tgjRouter);
 app.use(blogRouter);
 app.use(sourceRouter);
 app.use(tempathRouter);
+app.use(empathRouter);
 
 app.get("/", (req, res) => {
   res.send("hello");

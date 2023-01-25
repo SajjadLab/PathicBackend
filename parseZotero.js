@@ -32,23 +32,31 @@ for (let index = 0; index < data.items.length; index++) {
     const element = data.items[index];
 
     var temp = empath;
-    temp.source = element.key;
-    temp.title = [element.title];
-    temp.authors = [element.creators];
-    temp.publicationDate.startDate = element.publicationDate;
-    temp.publicationDate.endDate = element.publicationDate;
-    temp.uid = [element.ISBN];
+    temp.source = element.key; // Link to zotero key
+    temp.title = [element.title]; 
+    temp.authors = [element.creators]; // Process creators add to list
+    temp.publicationDate.startDate = element.date;
+    temp.publicationDate.endDate = element.date;
+    if (element.ISBN) {temp.uid = [element.ISBN]};// Conditional on it being a book, website will get uid from memex
     temp.referenceGroup.heirarchy = element.itemType;
-    temp.referenceGroup.value = element.edition;
+    if (element.edition) {temp.referenceGroup.value = element.edition};// Conditional on it being a book, website will get uid from memex
     temp.highlight = element.notes;
     temp.interpretation = element.abstractNote;
-    temp.interpreter = [element.creators]
-    temp.interpretationDate.startDate = element.interpretationDate;
-    temp.interpretationDate.endDate = element.interpretationDate;
+    temp.interpreter = [temp.authors[0]]
+    temp.interpretationDate.startDate = temp.publicationDate;
+    temp.interpretationDate.endDate = temp.publicationDate;
 
-    console.log(temp);
+    for (let j = 0; j < element.notes.length; j++) {
+        var note = element.notes[j];
 
-    fs.writeFile("/home/sajjad/vimwiki/Green_New_World/" + temp.title + ".md", JSON.stringify(temp), (err) => {
+
+        // console.log();
+        
+    };
+
+    // console.log(temp);
+
+    fs.writeFile("/home/sajjad/vimwiki/Green_New_World/" + temp.title + ".md", JSON.stringify(temp, null, 2), (err) => {
         if (err) console.log("oops", err);
     })
 

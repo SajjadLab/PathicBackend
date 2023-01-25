@@ -21,6 +21,7 @@
   "homepage": "https://github.com/SajjadLab/PathicBackend#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dom-parser": "^0.1.6",
     "express": "^4.18.2",
     "mongoose": "^6.8.2"
   },
