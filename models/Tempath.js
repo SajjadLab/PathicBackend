@@ -4,8 +4,7 @@ import FuzzyDateSchema from "./FuzzyDate.js";
 // Defines a versatile property object for entities
 const TempathSchema = new Schema({
     source: { 
-        type: Schema.types.ObjectId,
-        ref: "Entity", //zotero link or maybe people
+        type: String,
         required: true
         },
     title: {
@@ -37,12 +36,12 @@ const TempathSchema = new Schema({
         required: false
     },
     interpreter: { // The individual interprating the highlight
-        type: Schema.types.ObjectId, // type Tempath to a person
+        type: Schema.Types.ObjectId, // type Tempath to a person
         ref: "Tempath",
-        required: true
+        required: false
     },
     interpretationDate: { // When this object was interpreted
-        type: FuzzyDate,
+        type: FuzzyDateSchema,
         required: true
     },
     startDate: { // start date of relationship
@@ -55,7 +54,7 @@ const TempathSchema = new Schema({
     },
     chain: { // the books listed bibliography and references
                       // Will help when searching for new info (possible monty carlo search tre)
-        type: [{type: Schema.Types.ObjectId, ref: "Entity"}], // any ID (empath, idea)
+        type: [{type: Schema.Types.ObjectId, ref: "Tempath"}], // any ID (empath, idea)
         required: false
     },
     reliability: {

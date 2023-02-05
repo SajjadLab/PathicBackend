@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import bodyParser from "body-parser"
 import tgjRouter from "./routes/tgjRecords.js";
 import blogRouter from "./routes/blogRecords.js";
 import sourceRouter from "./routes/sourceRecords.js";
@@ -21,7 +22,9 @@ const corsOptions ={
 }
 
 app.use(cors(corsOptions))
-app.use(express.json());
+//app.use(express.json());
+app.use(bodyParser.json({limit: '5mb'}));
+app.use(bodyParser.urlencoded({limit: '5mb', extended: true}));
 app.use(tgjRouter);
 app.use(blogRouter);
 app.use(sourceRouter);

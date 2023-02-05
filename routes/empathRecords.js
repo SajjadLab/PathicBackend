@@ -5,13 +5,13 @@ const empathRouter = express.Router();
 import { getAllEmpaths, getOneEmpath, addOneEmpath } from "../controllers/empathController.js";
  
 // get a list of all the sources.
-empathRouter.get("/Tempath", getAllTempaths);
+empathRouter.get("/empath", getAllEmpaths);
 
 // get a single record by id
-empathRouter.get("/Tempath/:id", getOneTempath);
+empathRouter.get("/empath/:id", getOneEmpath);
  
 // create a new record.
-empathRouter.post("/Tempath/add", addOneTempath);
+empathRouter.post("/empath/add", addOneEmpath);
  
 // update a record by id.
 //router.route("/update/:id").post();

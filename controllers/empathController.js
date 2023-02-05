@@ -1,10 +1,10 @@
 import Empath from "../models/EmpathSource.js";
 
-// Get all Tempath
+// Get all empath
 const getAllEmpaths = async (req, res) => {
   try {
     const empaths = await Empath.find({});
-    res.status(200).json(tempaths);
+    res.status(200).json(empaths);
   }
   catch (err) {
     console.log(err);
@@ -12,7 +12,7 @@ const getAllEmpaths = async (req, res) => {
   }
 }
 
-// get Tempath by id
+// get empath by id
 const getOneEmpath = async (req, res) => {
   try {
     const empath = await Empath.findById(req.params.id);
@@ -24,7 +24,7 @@ const getOneEmpath = async (req, res) => {
   }
 }
 
-// add one Tempath
+// add one empath
 const addOneEmpath = async (req, res) => {
   try {
     const empath = await Empath.create({

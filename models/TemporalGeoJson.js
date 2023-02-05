@@ -6,11 +6,11 @@ import FuzzyDateSchema from "./FuzzyDate.js";
 const TemporalGeoJsonSchema = new Schema({
   type: { // Type of geojson
     type: String,
-    enum: ['Feature'],
+    enum: ['Feature', 'FeatureCollection'],
     required:true
   },
   properties: { // temporal properties and all relationships with terraperiums/other
-    name: String,
+    title: String,
     startDate: FuzzyDateSchema,
     endDate: FuzzyDateSchema,
     entities: [{ type: Schema.Types.ObjectId, ref: "Tempath" }], // link to objects through Tempaths
@@ -20,13 +20,17 @@ const TemporalGeoJsonSchema = new Schema({
   geometry: { // geojson geometry
     type: {
       type: String,
-      enum: ['MultiPolygon'],
-      required: true
+      enum: ['MultiPolygon', 'GeometryCollection'],
+      required: false
     },
     coordinates: {
       type: [[[[Number]]]],
-      required: true
+      required: false
     }
+  },
+  features: {
+    type: [],
+    required: false
   }
 });
 

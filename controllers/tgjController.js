@@ -4,10 +4,10 @@ import TemporalGeoJson from "../models/TemporalGeoJson.js";
 // Get all tgj records
 const getAllTGJ = async (req, res) => {
   try {
-    const tgjs = await TemporalGeoJson.find({});
+    const features = await TemporalGeoJson.where(type, "Feature");
     const temp = {
       "type": "FeatureCollection",
-      "features": tgjs
+      "features": features
     };
     res.status(200).json(temp);
   }
@@ -30,6 +30,7 @@ const getAnnualTGJ = async (req, res) => {
                                 path: "endDate",
                                 match: { startDate: { $gte: year } }
                             })
+        console.log(tgjs);
         res.status(200).json(tgjs);
     }
     catch (err) {

@@ -14,8 +14,7 @@ const EmpathSchema = new Schema({
         required: true
     },
     source: { 
-        type: Schema.types.ObjectId,
-        ref: "Source",
+        type: String,
         required: true
         },
     referenceGroup: { // Organizational location of the highlight
@@ -33,7 +32,7 @@ const EmpathSchema = new Schema({
     interpreter: { // The individual interprating the highlight
         type: Schema.types.ObjectId, // type Tempath to a person
         ref: "Tempath",
-        required: true
+        required: false
     },
     interpretationDate: { // When this object was interpreted
         type: FuzzyDate,

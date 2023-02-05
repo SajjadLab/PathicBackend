@@ -1,11 +1,10 @@
 import mongoose, { Schema } from "mongoose";
-import FuzzyDate from "./FuzzyDate";
+import FuzzyDateSchema from "./FuzzyDate.js";
 
 // Interpretation object for relating perspective
 const EmpathSchema = new Schema({
     source: { 
-        type: Schema.types.ObjectId,
-        ref: "Entity", //zotero link or maybe people
+        type: String,
         required: true
         },
     title: {
@@ -14,7 +13,7 @@ const EmpathSchema = new Schema({
     },
     authors: { // all authors
         type: [{type: Schema.Types.ObjectId, ref: "Tempath"}], // tempath to People
-        required: true
+        required: false
     },
     publicationDate: { // original publication date
         type: FuzzyDateSchema,
@@ -37,12 +36,12 @@ const EmpathSchema = new Schema({
         required: false
     },
     interpreter: { // The individual interprating the highlight
-        type: Schema.types.ObjectId, // type Tempath to a person
+        type: Schema.Types.ObjectId, // type Tempath to a person
         ref: "Tempath",
-        required: true
+        required: false
     },
     interpretationDate: { // When this object was interpreted
-        type: FuzzyDate,
+        type: FuzzyDateSchema,
         required: true
     },
     chain: { // the books listed bibliography and references
