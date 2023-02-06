@@ -4,7 +4,7 @@ import TemporalGeoJson from "../models/TemporalGeoJson.js";
 // Get all tgj records
 const getAllTGJ = async (req, res) => {
   try {
-    const features = await TemporalGeoJson.where(type, "Feature");
+    const features = await TemporalGeoJson.where("type", "Feature");
     const temp = {
       "type": "FeatureCollection",
       "features": features
