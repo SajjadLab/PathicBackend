@@ -15,7 +15,7 @@ const getAllTempaths = async (req, res) => {
 // get Tempath by id
 const getOneTempath = async (req, res) => {
   try {
-    const tempath = await Tempath.findById(req.params.id);
+    const tempath = await Tempath.findById(req.params.id).populate("chain");
     res.status(200).json(tempath);
   }
   catch (err) {

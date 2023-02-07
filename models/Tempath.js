@@ -54,7 +54,7 @@ const TempathSchema = new Schema({
     },
     chain: { // the books listed bibliography and references
                       // Will help when searching for new info (possible monty carlo search tre)
-        type: [{type: Schema.Types.ObjectId, ref: "Tempath"}], // any ID (empath, idea)
+        type: [{type: Schema.Types.ObjectId, ref: "Empath"}], // any ID (empath, idea)
         required: false
     },
     reliability: {
